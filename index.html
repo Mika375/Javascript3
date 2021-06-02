@@ -1,0 +1,82 @@
+<!DOGTYPE html>
+<html>
+  <html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <title>リアルタイムフィルター</title>
+  </head>
+  
+  <body>
+    
+    <h1>リアルタイムフィルター</h1>
+    <input id="input" placeholder="検索ワードを入力"/>
+
+    <div class="block">
+      <div class="box">
+        <img id="image" src="https://publicdomainq.net/images/201705/31s/publicdomainq-0009627ckv.jpg"></img>
+        <p>キーワード</p>
+        <div class="word-list">
+          <p>ドーナツ</p>
+          <p>どーなつ</p>
+          <p>do-natsu</p>
+        </div>  
+      </div>
+      <div class="box">  
+        <img src="https://d1f5hsy4d47upe.cloudfront.net/64/64a199b1e4415cbd8341f45897124ee9_t.jpeg" ></img>
+        <p>キーワード</p>
+        <div class="word-list">
+          <p>レモン</p>
+          <p>れもん</p>
+          <p>remon</p>
+        </div>  
+      </div>
+
+      <div class="box">
+        <img src="https://beiz.jp/images_T/sky/sky_00006.jpg"></img>
+        <p>キーワード</p>
+        <div class="word-list">
+          <p>空</p>
+          <p>そら</p>
+          <p>sora</p>
+        </div>  
+      </div>
+      <div class="box">
+        <img src="https://thumb.photo-ac.com/da/da0b98d50514ed685877b32a9efca655_t.jpeg"></img>
+        <p>キーワード</p>
+        <div class="word-list">
+          <p>ラッパ</p>
+          <p>らっぱ</p>
+          <p>rappa</p>
+        </div>  
+      </div>
+    </div>  
+    
+    <script type="text/javascript" src="main.js" charset="UTF-8"></script>
+    <script>      
+    function Search(text){
+      $(".word-list").each(function(index , element){
+        let keyword = $(element).text();
+          if(keyword.indexOf(text) == -1){
+            $(element).parent().css("display", "none");
+          }else{
+            $(element).parent().css("display", "inline-block");
+          }
+      });
+    }
+            
+    $("#input").on("input", function(event){
+      let text = $("#input").val();
+        if(text == ""){
+          $(".box").css("display", "inline-block");
+        }else{
+          Search(text);
+        }
+    });      
+    </script>
+    
+  </body>
+</html>
